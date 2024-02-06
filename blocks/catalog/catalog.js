@@ -1,4 +1,4 @@
-import {getCookie} from "../../scripts/libs"
+import {getCookie} from "../../scripts/libs.js"
 export default function decorate(block) {
   // [...block.children].forEach((row) => {
   //   row.className = "slide";
