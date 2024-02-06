@@ -1,9 +1,29 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
+const API_CLIENT_ID = 'fbe5e04a-dd1e-412f-8945-e599a7a74166'
+const API_CLIENT_SECRET = '5fe3b3f3-e316-4b4c-9625-809bcfc9e848'
+const API_REFRESH_TOKEN = '8d9bca948a0be41dc4524152e1444b52'
+const REACT_APP_URL='http://localhost:3000'
+const REACT_APP_ALM_URL='https://learningmanager.adobe.com'
 
+
+function getCookie() {
+  let name = "access_token" + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
@@ -92,6 +112,37 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  */
 export default async function decorate(block) {
   // load nav as fragment
+  function getCpOauthUrl() {
+
+    document.location.href =
+    REACT_APP_ALM_URL+"/oauth/o/authorize?client_id="+API_CLIENT_ID+"&redirect_uri="+REACT_APP_URL+"&state=cpState&scope=learner:read,learner:write&response_type=CODE&client_identifier=aemsite";
+  }
+  function setLogout() {
+    document.cookie = "access_token" + "=" + ("");
+    location.reload();
+  }
+  
+  async function fetchToken(code) {
+    if (code) {
+      var requestOptions = {
+        method: "POST",
+        redirect: "follow",
+      };
+
+      fetch(
+        `https://learningmanager.adobe.com/oauth/token?client_id=fbe5e04a-dd1e-412f-8945-e599a7a74166&client_secret=5fe3b3f3-e316-4b4c-9625-809bcfc9e848&refresh_token=8d9bca948a0be41dc4524152e1444b52&code=${code}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          document.cookie = "access_token" + "=" + (result.access_token || "");
+          document.location.href =REACT_APP_URL;
+        })
+        .catch((error) => console.log("error", error));
+    }
+
+  }
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta).pathname : '/nav';
   const fragment = await loadFragment(navPath);
@@ -128,6 +179,34 @@ export default async function decorate(block) {
     });
   }
 
+  Window.onload = handlePrimeLogIn();
+
+  async function handlePrimeLogIn() {
+    console.log("handlePrimeLogIn");
+    // const isLoggedIn = this.isLoggedIn();
+    const currentUrl = new URL(window.location.href);
+    const code = currentUrl.searchParams.get("code");
+    if (code) {
+      console.log("inside oauthcode");
+      await fetchToken(code);
+    } else {
+      console.log("hello");
+      if (getCookie() == "") {
+        const markup = document.createElement("button");
+        markup.setAttribute("id", "myButton");
+        markup.innerHTML = "LOG IN";
+        markup.addEventListener("click", () => getCpOauthUrl());
+        nav.append(markup);
+      }else{
+        const markup = document.createElement("button");
+        markup.setAttribute("id", "myButton");
+        markup.innerHTML = "LOG OUT";
+        markup.addEventListener("click", () => setLogout());
+        nav.append(markup);
+      }
+    }
+    //document.getElementById("myButton").onclick = getCpOauthUrl;
+  }
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
