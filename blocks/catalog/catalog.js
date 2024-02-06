@@ -1,26 +1,13 @@
+import {getCookie} from "../../scripts/libs"
 export default function decorate(block) {
   // [...block.children].forEach((row) => {
   //   row.className = "slide";
   // });
-  function getCookie() {
-    let name = "access_token" + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == " ") {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+  
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", `Bearer ${getCookie()}`);
-
+console.log(getCookie(),' asasasasa')
   var requestOptions = {
     method: "GET",
     headers: myHeaders,
@@ -28,7 +15,7 @@ export default function decorate(block) {
   };
 
   fetch(
-    "https://captivateprime.adobe.com/primeapi/v2/learningObjects?page[limit]=10&filter.loTypes=course&sort=name&filter.ignoreEnhancedLP=true",
+    "https://learningmanager.adobe.com/primeapi/v2/catalogs?page[offset]=0&page[limit]=10&sort=name",
     requestOptions
   )
     .then((response) => response.json())
