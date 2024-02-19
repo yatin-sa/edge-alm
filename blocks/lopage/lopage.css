@@ -1,3 +1,93 @@
+.lo_cover{
+  height: 250px;
+  padding: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: linear-gradient(to right top, #372605, #37491d, #056d53, #008ea0, #12a6eb);;
+  /* background-image: url('https://cpcontents.adobe.com/public/account/118427/banners/courses/6162521/2024-02-14%2015:15:01.377Healthy-New-Year-Innate.jpg'); */
+}
+.lo_cover h2{
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+    font-weight: bold;
+}
+.lopage-wrapper{
+max-width: 100% !important;
+}
+.lopage-container{
+  padding: 0 !important;
+}
+
+
+/* course tabs */
+#courseTab li{
+  color: #000 !important;
+  font-weight: bolder !important;
+  font-size: 13px !important;
+  border: none !important;
+  border-bottom: 2px solid #00A4EF !important;
+}
+#courseTab li button{
+  color: #000 !important;
+  font-weight: bolder !important;
+  font-size: 18px !important;
+  border: none !important;
+}
+#courseTab .active{
+  color: #000 !important;
+  border-bottom: 2px solid #00A4EF !important;
+}
+#courseTab li:hover,#courseTab li button:hover{
+  background: #fff !important;
+  
+}
+
+
+
+/* modules */
+.main_modules{
+  list-style-type: none;
+  padding: 0;
+}
+.main_modules li{
+  border-bottom: 1px solid #ddd;
+  padding: 10px 2px;
+  display: flex !important;
+  cursor: pointer;
+}
+.main_modules li img{
+  width: 50px;
+  margin-right: 10px;
+}
+.main_modules li:last-child{
+  border-bottom: none
+}
+.main_modules h2{
+  font-size: 15px;
+}
+.main_modules li div{
+  width: 100%;
+}
+.main_modules p{
+  font-size: 12px;
+  color: #333;
+}
+.main_enroll_btn{
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
 .catalog .carousel_main {
   max-width: 100rem;
 }

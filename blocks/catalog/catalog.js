@@ -1,31 +1,51 @@
-import {getCookie} from "../../scripts/libs.js"
+
+import { getCookie, getLO,renderMarkupCard,renderMarkupCarosuel,renderMarkupList,pagination } from '../../scripts/libs.js';
+
 export default function decorate(block) {
   // [...block.children].forEach((row) => {
   //   row.className = "slide";
   // });
-  
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Authorization", `Bearer ${getCookie()}`);
-console.log(getCookie(),' asasasasa')
-  var requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-  };
-
-  fetch(
-    "https://learningmanager.adobe.com/primeapi/v2/catalogs?page[offset]=0&page[limit]=10&sort=name",
-    requestOptions
-  )
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result.data);
-      renderMarkup(result.data, true);
+  const catalog = document.getElementsByClassName('catalog');
+  const classmain = catalog[0].className.split(' ');
+  const catalogueIDList = classmain.filter(
+    (x) => x.indexOf("id-") > -1
+  );
+  var catalogueID = '';
+  if (catalogueIDList && catalogueIDList[0]) {
+    catalogueID = catalogueIDList[0].replace('id-', '');
+  }
+  var designLayoutType = classmain.filter(
+    (x) => x.indexOf("lt-") > -1
+  );
+  var designLayout = '';
+  if (designLayoutType && designLayoutType[0]) {
+    designLayout = designLayoutType[0].replace('lt-', '');
+  }
+  console.log('qqqqq data1111  ', designLayout);
+  console.log('qqqqq data  ', designLayout);
+  getLO().then(resposnse => {
+    console.log('cataloge data ', resposnse)
+    const parentEl = document.querySelector('.catalog');
+    if(designLayout=='list'){
+      parentEl.classList.add("list_catalog");   
+      renderMarkupList(parentEl,resposnse.data, true);
+    }else if(designLayout=='carousel'){
+      parentEl.classList.add("carousel_main");   
+      renderMarkupCarosuel(parentEl,resposnse.data, true);
       goToSlide(0);
-      sleek();
-    })
-    .catch((error) => console.log("error", error));
+     sleek();
+    }else{
+      parentEl.insertAdjacentHTML("afterend", `<div class="numList"></div>`);
+      renderMarkupCard(parentEl,resposnse.data, true);
+      // pagination();
+    }
+    
+    // renderMarkup(resposnse.data, true);
+    // goToSlide(0);
+    // sleek();
+  });
+  // &filter.catalogIds=154422
+
   const renderMarkup = function (result, value) {
     const markup = generateMarkuploop();
     const parentEl = document.querySelector(".carouselapi");
@@ -99,16 +119,5 @@ console.log(getCookie(),' asasasasa')
       goToSlide(currentSlide);
     }
   }
-  // const totalSlide = slides.length;
-  // console.log("slides" + totalSlide);
-  // function goToSlide(slide) {
-  //   slides.forEach((s, i) => {
-  //     s.style.transform = `translateX(${100 * (i - slide)}%)`;
-  //   });
-  // }
-  // const goToSlide = function (slide) {
-  //   slides.forEach((s, i) => {
-  //     s.style.transform = `translateX(${100 * (i - slide)}%)`;
-  //   });
-  // };
+ 
 }
