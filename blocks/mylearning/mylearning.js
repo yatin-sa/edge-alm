@@ -5,7 +5,7 @@ export default function decorate(block) {
   // [...block.children].forEach((row) => {
   //   row.className = "slide";
   // });
-  const catalog = document.getElementsByClassName('catalog');
+  const catalog = document.getElementsByClassName('mylearning');
   const classmain = catalog[0].className.split(' ');
   const catalogueIDList = classmain.filter(
     (x) => x.indexOf("id-") > -1
@@ -23,11 +23,11 @@ export default function decorate(block) {
   }
   console.log('qqqqq data1111  ', designLayout);
   console.log('qqqqq data  ', designLayout);
-  getLO(catalogueID).then(resposnse => {
+  getLO('',true).then(resposnse => {
     console.log('cataloge data ', resposnse)
-    const parentEl = document.querySelector('.catalog');
+    const parentEl = document.querySelector('.mylearning');
     if(designLayout=='list'){
-      parentEl.classList.add("list_catalog");   
+      parentEl.classList.add("list_mylearning");   
       renderMarkupList(parentEl,resposnse.data, true);
     }else if(designLayout=='carousel'){
       parentEl.classList.add("carousel_main");   

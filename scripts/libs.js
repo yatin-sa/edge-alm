@@ -16,7 +16,7 @@ export function getCookie() {
     return "";
 }
 
-export function getLO() {
+export function getLO(catalog,isLearning = false) {
     var resp = [];
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -26,11 +26,9 @@ export function getLO() {
         headers: myHeaders,
         redirect: "follow",
     };
-
-    return fetch(
-        "https://learningmanager.adobe.com/primeapi/v2/learningObjects?page[limit]=10&filter.loTypes=course&sort=name&filter.ignoreEnhancedLP=true",
-        requestOptions
-    )
+    console.log('jijijijijiji ',configALM().APIURL)
+    var loURL = configALM().APIURL+((isLearning) ? "learningObjects?page[limit]=10&filter.learnerState=enrolled,completed,started&sort=name&filter.ignoreEnhancedLP=true" : "learningObjects?page[limit]=10&filter.catalogIds="+catalog+"&sort=name&filter.ignoreEnhancedLP=true");
+    return fetch(loURL, requestOptions)
         .then(res => res.json())
         .then((result) => {
             console.log(result);
@@ -65,7 +63,7 @@ export function renderMarkupCarosuel(parentEl, result, value) {
         return `<div class="slideapi">
         <div>
       <picture><source  srcset="${result.attributes.imageUrl}" alt="" ><img loading="lazy" src="${result.attributes.imageUrl}"></picture>
-      <div class="img-txt">${result.attributes.localizedMetadata[0].name}</div>
+      <div class="img-txt"><a href="overview?lo=${result.id}">${result.attributes.localizedMetadata[0].name}</a></div>
       </div>
       </div>`;
       }
@@ -85,7 +83,7 @@ export function renderMarkupCard(parentEl, result, value) {
         if(result.attributes.imageUrl){
             return `<li class="card-item dis" id="${result.attributes.localizedMetadata[0].overview}">
             <div class="cards-card-image"><img class="products-img" src="${result.attributes.imageUrl}" alt="" /></div>
-            <div class="cards-card-body"><h5><strong>${result.attributes.localizedMetadata[0].name}</strong></h5></div>
+            <div class="cards-card-body"><h5><strong><a href="overview?lo=${result.id}">${result.attributes.localizedMetadata[0].name}</a></strong></h5></div>
         </li>`;
         }
         
@@ -227,3 +225,77 @@ export function enrollUser(id,instance) {
 
 }
 
+
+
+
+export function getDate(dateStart, dateEnd){
+    const startdate = new Date(dateStart);
+    const enddate = new Date(dateEnd);
+    const month_num = startdate.getMonth();
+    let month = "";
+    switch (month_num) {
+      case 0:
+        month = "January";
+        break;
+      case 1:
+        month = "February";
+        break;
+      case 2:
+        month = "March";
+        break;
+      case 3:
+        month = "April";
+        break;
+      case 4:
+        month = "May";
+        break;
+      case 5:
+        month = "June";
+        break;
+      case 6:
+        month = "July";
+        break;
+      case 7:
+        month = "August";
+        break;
+      case 8:
+        month = "September";
+        break;
+      case 9:
+        month = "October";
+        break;
+      case 10:
+        month = "November";
+        break;
+      case 11:
+        month = "December";
+        break;
+    }
+
+    const day = startdate.getDate();
+    const year = startdate.getFullYear();
+
+    let shours = startdate.getHours();
+    const sminutes =
+      startdate.getMinutes() == 0 ? "00" : startdate.getMinutes();
+
+    const ehours = enddate.getHours();
+    const eminutes = enddate.getMinutes() == 0 ? "00" : enddate.getMinutes();
+
+    return (
+      month +
+      " " +
+      day +
+      "," +
+      year +
+      " (" +
+      shours +
+      ":" +
+      sminutes +
+      "-" +
+      ehours +
+      ":" +
+      eminutes +
+      " )"
+    );
+  };

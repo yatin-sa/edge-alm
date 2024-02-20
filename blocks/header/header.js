@@ -111,6 +111,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+  console.log('header blocj ',block)
   // load nav as fragment
   function getCpOauthUrl() {
 
@@ -195,11 +196,15 @@ export default async function decorate(block) {
         const markup = document.createElement("button");
         markup.setAttribute("id", "myButton");
         markup.innerHTML = "LOG IN";
+        markup.classList.add("btn");
+        markup.classList.add("btn-outline-light");
         markup.addEventListener("click", () => getCpOauthUrl());
         nav.append(markup);
       }else{
         const markup = document.createElement("button");
         markup.setAttribute("id", "myButton");
+        markup.classList.add("btn");
+        markup.classList.add("btn-outline-light");
         markup.innerHTML = "LOG OUT";
         markup.addEventListener("click", () => setLogout());
         nav.append(markup);

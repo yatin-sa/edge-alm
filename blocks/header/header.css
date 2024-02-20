@@ -1,9 +1,9 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   width: 100%;
   z-index: 2;
-  position: fixed;
+  /* position: fixed; */
 }
 
 header nav {
@@ -15,10 +15,13 @@ header nav {
   align-items: center;
   gap: 0 2em;
   margin: auto;
-  max-width: 1264px;
+  /* max-width: 1264px; */
+  max-width: 100%;
   height: var(--nav-height);
   padding: 0 1rem;
   font-family: var(--body-font-family);
+  color: #fff !important;
+  font-size: 14px !important;
 }
 
 header nav[aria-expanded="true"] {
@@ -148,7 +151,7 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 160px;
   height: auto;
 }
 
@@ -201,6 +204,7 @@ header nav .nav-sections ul > li > ul > li {
     position: relative;
     padding-right: 16px;
     cursor: pointer;
+    
   }
 
   header nav .nav-sections .nav-drop::after {

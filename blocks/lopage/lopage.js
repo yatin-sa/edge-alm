@@ -44,9 +44,9 @@ export default function decorate(block) {
     const modulesMarkup = modules(resource, response.data.id,isEnroll,LoInsarray[0].id);
     
     
-    const courseTabs = '<div class="mt-3"><ul class="nav nav-tabs" id="courseTab"><li class="nav-item"><button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#moduleTab" type="button">Modules</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#overviewTab" type="button">Overview</button></li></ul><div class="tab-content" id="courseTabContent"><div class="tab-pane fade show active pt-4" id="moduleTab">' + modulesMarkup + '</div><div class="tab-pane fade pt-4" id="overviewTab">' + response?.data?.attributes?.localizedMetadata[0].description + '</div></div></div>'
+    const courseTabs = '<div class="mt-3 card p-3"><ul class="nav nav-tabs" id="courseTab"><li class="nav-item"><button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#moduleTab" type="button">Modules</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#overviewTab" type="button">Overview</button></li></ul><div class="tab-content" id="courseTabContent"><div class="tab-pane fade show active pt-4" id="moduleTab">' + modulesMarkup + '</div><div class="tab-pane fade pt-4" id="overviewTab">' + response?.data?.attributes?.localizedMetadata[0].description + '</div></div></div>'
 
-    parentEl.insertAdjacentHTML("afterbegin", bannerMarkup + '<div class="container"><div class="row"><div class="col-9">' + courseTabs + '</div><div class="col-3">' + rightColMarkup + '</div></div></div>');
+    parentEl.insertAdjacentHTML("afterbegin", bannerMarkup + '<div class="container-fluid"><div class="row"><div class="col-9">' + courseTabs + '</div><div class="col-3">' + rightColMarkup + '</div></div></div>');
     handleContinueClick();
   });
   });
@@ -85,7 +85,7 @@ function modules(resp, loId,isEnroll,instance) {
 function rightCol(resp, loId,isEnroll,instance) {
   var content = '';
   console.log('sasasas ',getLabel(resp));
-  content = '<div class="mt-4"><button instance="' + instance + '" enroll="'+isEnroll+'" type="button" loid="' + loId + '" class="handlelo main_enroll_btn btn-primary btn-lg">'+getLabel(resp)+'</button></div>';
+  content = '<div class="mt-4"><button instance="' + instance + '" enroll="'+isEnroll+'" type="button" loid="' + loId + '" class="handlelo main_enroll_btn btn btn-outline-light btn-lg">'+getLabel(resp)+'</button></div>';
   return content;
 }
 

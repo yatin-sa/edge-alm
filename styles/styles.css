@@ -167,7 +167,9 @@ a.button.secondary, button.secondary {
   border: 2px solid currentcolor;
   color: var(--text-color)
 }
-
+main{
+  min-height: 85vh !important;
+}
 main img {
   max-width: 100%;
   width: auto;

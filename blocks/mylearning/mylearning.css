@@ -1,95 +1,4 @@
-.lo_cover{
-  height: 250px;
-  padding: 40px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: linear-gradient(to right top, #12a6eb, #82d8f9, #b3e0f2, #d5e8fc, #ADD8E6);
-  /* background-image: linear-gradient(to right top, #372605, #37491d, #056d53, #008ea0, #12a6eb);; */
-  /* background-image: url('https://cpcontents.adobe.com/public/account/118427/banners/courses/6162521/2024-02-14%2015:15:01.377Healthy-New-Year-Innate.jpg'); */
-}
-.lo_cover h2{
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3), 
-    0px -4px 10px rgba(255,255,255,0.3);
-    font-weight: bold;
-}
-.lopage-wrapper{
-max-width: 100% !important;
-}
-.lopage-container{
-  padding: 0 !important;
-}
-
-
-/* course tabs */
-#courseTab li{
-  color: #000 !important;
-  font-weight: bolder !important;
-  font-size: 13px !important;
-  border: none !important;
-  border-bottom: 2px solid #00A4EF !important;
-}
-#courseTab li button{
-  color: #000 !important;
-  font-weight: bolder !important;
-  font-size: 18px !important;
-  border: none !important;
-}
-#courseTab .active{
-  color: #000 !important;
-  border-bottom: 2px solid #00A4EF !important;
-}
-#courseTab li:hover,#courseTab li button:hover{
-  background: #fff !important;
-  
-}
-
-
-
-/* modules */
-.main_modules{
-  list-style-type: none;
-  padding: 0;
-}
-.main_modules li{
-  border-bottom: 1px solid #ddd;
-  padding: 10px 2px;
-  display: flex !important;
-  cursor: pointer;
-}
-.main_modules li img{
-  width: 50px;
-  margin-right: 10px;
-}
-.main_modules li:last-child{
-  border-bottom: none
-}
-.main_modules h2{
-  font-size: 15px;
-}
-.main_modules li div{
-  width: 100%;
-}
-.main_modules p{
-  font-size: 12px;
-  color: #333;
-}
-.main_enroll_btn{
-  width: 100%;
-  padding: 10px 20px;
-  border-radius: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-
-.catalog .carousel_main {
+.mylearning .carousel_main {
   max-width: 100rem;
 }
 .carousel_main {
@@ -100,7 +9,7 @@ max-width: 100% !important;
   overflow-x: hidden;
 }
 
-.catalog-container {
+.mylearning-container {
   padding: 64px 32px;
 }
 
@@ -177,7 +86,7 @@ button {
   border: 1px solid grey;
   border-radius: 10px;
 }
-.catalog > ul {
+.mylearning > ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -188,24 +97,24 @@ button {
 
 
 
-.catalog > ul > li {
+.mylearning > ul > li {
   border: 1px solid var(--dark-color);
   background-color: var(--background-color);
 }
 
-.catalog .cards-card-body {
+.mylearning .cards-card-body {
   margin: 16px;
 }
 
-.catalog .cards-card-image {
+.mylearning .cards-card-image {
   line-height: 0;
 }
 
-.catalog .cards-card-body > *:first-child {
+.mylearning .cards-card-body > *:first-child {
   margin-top: 0;
 }
 
-.catalog > ul > li img {
+.mylearning > ul > li img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
@@ -215,37 +124,37 @@ button {
   filter: brightness(80%);
 }
 /* list */
-.list_catalog ul{
+.list_mylearning ul{
   list-style: none;
   margin: 0;
   padding: 0;
   display: block;
 }
-.list_catalog > ul > li {
+.list_mylearning > ul > li {
   padding: 20px;
 
 }
-.list_catalog li {
+.list_mylearning li {
   display: flex;
   margin-bottom: 20px;
 }
-.list_catalog .item .item-image img{
+.list_mylearning .item .item-image img{
   width: 250px;
   margin-right: 20px;
 }
-.list_catalog .item .item-body{
+.list_mylearning .item .item-body{
   flex: 1;
   text-align: left;
 }
 
-.list_catalog .item-title {
+.list_mylearning .item-title {
   font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
   margin-top: 0;
 }
 
-.list_catalog .item-text {
+.list_mylearning .item-text {
   margin-top: 0;
   font-size: 16px;
   color: rgb(40, 60, 96);
@@ -257,26 +166,26 @@ button {
    -webkit-box-orient: vertical;
 }
 
-.list_catalog li,.list_catalog p {
+.list_mylearning li,.list_mylearning p {
 line-height: 200%
 }
 
 @media (min-width: 900px) {
-  .list_catalog {
+  .list_mylearning {
  max-width: 600px;
 }
 }
 @media (min-width: 1200px) {
-  .list_catalog {
+  .list_mylearning {
   max-width: 1140px;
 }
 
 }
 
-.list_catalog > div > div > :first-child {
+.list_mylearning > div > div > :first-child {
 margin-top: 0;
 }
 
-.list_catalog > div > div > :last-child {
+.list_mylearning > div > div > :last-child {
 margin-bottom: 0;
 }
