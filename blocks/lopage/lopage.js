@@ -85,7 +85,7 @@ function modules(resp, loId,isEnroll,instance) {
 function rightCol(resp, loId,isEnroll,instance) {
   var content = '';
   console.log('sasasas ',getLabel(resp));
-  content = '<div class="mt-4"><button instance="' + instance + '" enroll="'+isEnroll+'" type="button" loid="' + loId + '" class="handlelo main_enroll_btn btn btn-outline-light btn-lg">'+getLabel(resp)+'</button></div>';
+  content = '<div class="mt-4"><button instance="' + instance + '" enroll="'+isEnroll+'" type="button" loid="' + loId + '" class="handlelo main_enroll_btn btn btn-outline-primary btn-lg">'+getLabel(resp)+'</button></div>';
   return content;
 }
 
