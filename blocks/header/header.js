@@ -5,7 +5,7 @@ const isDesktop = window.matchMedia('(min-width: 900px)');
 const API_CLIENT_ID = '3065ad68-a2bc-478f-a52a-fa23d6cb0870'
 const API_CLIENT_SECRET = '00ef03cf-93d4-4cb8-97ba-d8c5b8b8b665'
 //const API_REFRESH_TOKEN = '8d9bca948a0be41dc4524152e1444b52'
-const REACT_APP_URL='https://main--edge-alm--yatin-sa.hlx.page'
+const REACT_APP_URL='https://v2--edge-alm--yatin-sa.hlx.page'
 // const REACT_APP_URL='http://localhost:3000'
 const REACT_APP_ALM_URL='https://learningmanager.adobe.com'
 
