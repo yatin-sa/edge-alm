@@ -2,8 +2,8 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
-const API_CLIENT_ID = 'fbe5e04a-dd1e-412f-8945-e599a7a74166'
-const API_CLIENT_SECRET = '5fe3b3f3-e316-4b4c-9625-809bcfc9e848'
+const API_CLIENT_ID = '3065ad68-a2bc-478f-a52a-fa23d6cb0870'
+const API_CLIENT_SECRET = '00ef03cf-93d4-4cb8-97ba-d8c5b8b8b665'
 //const API_REFRESH_TOKEN = '8d9bca948a0be41dc4524152e1444b52'
 const REACT_APP_URL='https://main--edge-alm--yatin-sa.hlx.page'
 // const REACT_APP_URL='http://localhost:3000'
@@ -132,7 +132,7 @@ export default async function decorate(block) {
       };
 
       fetch(
-        `https://learningmanager.adobe.com/oauth/token?client_id=fbe5e04a-dd1e-412f-8945-e599a7a74166&client_secret=5fe3b3f3-e316-4b4c-9625-809bcfc9e848&refresh_token=8d9bca948a0be41dc4524152e1444b52&code=${code}`,
+        `https://learningmanager.adobe.com/oauth/token?client_id=3065ad68-a2bc-478f-a52a-fa23d6cb0870&client_secret=00ef03cf-93d4-4cb8-97ba-d8c5b8b8b665&refresh_token=8d9bca948a0be41dc4524152e1444b52&code=${code}`,
         requestOptions
       )
         .then((response) => response.json())
