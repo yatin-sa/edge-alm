@@ -1,0 +1,3 @@
+1. go to the block>>header>>header.js 
+2. update the client id and client screct and th redirecturl 
+3. go to the fstab.yaml file in the main folder and update the link to your google drive folder.
