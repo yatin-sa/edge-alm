@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-   background-color:rgb(0, 0, 0) !important;
+   background-color:#fff !important;
   width: 100%;
   z-index: 2;
   /* position: fixed; */
