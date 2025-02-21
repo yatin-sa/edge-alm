@@ -198,7 +198,7 @@ export default async function decorate(block) {
         markup.setAttribute("id", "myButton");
         markup.innerHTML = "LOG IN";
         markup.classList.add("btn");
-        markup.classList.add("btn-outline-light");
+        markup.classList.add("btn-outline-dark");
         markup.addEventListener("click", () => getCpOauthUrl());
         nav.append(markup);
       }else{
