@@ -205,7 +205,7 @@ export default async function decorate(block) {
         const markup = document.createElement("button");
         markup.setAttribute("id", "myButton");
         markup.classList.add("btn");
-        markup.classList.add("btn-outline-light");
+        markup.classList.add("btn-outline-dark");
         markup.innerHTML = "LOG OUT";
         markup.addEventListener("click", () => setLogout());
         nav.append(markup);
