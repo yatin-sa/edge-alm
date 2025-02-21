@@ -2,8 +2,8 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
-const API_CLIENT_ID = 'fbe5e04a-dd1e-412f-8945-e599a7a74166'
-const API_CLIENT_SECRET = '5fe3b3f3-e316-4b4c-9625-809bcfc9e848'
+const API_CLIENT_ID = 'ea62265f-72a0-4161-84ea-c4dda0b2db8a'
+const API_CLIENT_SECRET = '82123ea1-73c0-4be2-9f23-b192c86f3cfa'
 //const API_REFRESH_TOKEN = '8d9bca948a0be41dc4524152e1444b52'
 const REACT_APP_URL='https://main--edge-alm--yatin-sa.hlx.page/fedex'
 // const REACT_APP_URL='http://localhost:3000'
