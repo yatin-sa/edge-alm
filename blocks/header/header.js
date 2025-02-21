@@ -132,7 +132,7 @@ export default async function decorate(block) {
       };
 
       fetch(
-        `https://learningmanager.adobe.com/oauth/token?client_id=ea62265f-72a0-4161-84ea-c4dda0b2db8a&client_secret=82123ea1-73c0-4be2-9f23-b192c86f3cfa&refresh_token=a558e6260d140c9a67cec499574146ac&code=${code}`,
+        `https://learningmanager.adobe.com/oauth/token?client_id=ea62265f-72a0-4161-84ea-c4dda0b2db8a&client_secret=82123ea1-73c0-4be2-9f23-b192c86f3cfa&code=${code}`,
         requestOptions
       )
         .then((response) => response.json())
